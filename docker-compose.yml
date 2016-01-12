@@ -9,12 +9,12 @@ elasticsearch:
   command: elasticsearch -Des.network.host=0.0.0.0
   ports:
     - "9200:9200"
-  logstash:
-    image: logstash
-    command: logstash -f /etc/logstash/conf.d/logstash.conf
-    volumes:
-      - /etc/logstash/conf.d:/etc/logstash/conf.d
-    ports:
-      - "5000:5000"
-    links:
-      - elasticsearch
+logstash:
+  image: logstash
+  command: logstash -f /etc/logstash/conf.d/logstash.conf
+  volumes:
+    - /etc/logstash/conf.d:/etc/logstash/conf.d
+  ports:
+    - "5000:5000"
+  links:
+    - elasticsearch
